@@ -24,8 +24,12 @@ contract Market {
         address _erc721Token
     ) {
         require(
+            _erc20Token.code.length > 0,
+            "Invalid TestToken contract!"
+        );
+        require(
             _erc721Token.code.length > 0,
-            "Invalid token contract!"
+            "Invalid INF Token contract!"
         );
         erc20Token = IERC20(_erc20Token);
         erc721Token = IERC721(_erc721Token);
@@ -63,7 +67,7 @@ contract Market {
         Sale memory _sale = idToSale[_tokenId];
         require(
             _sale.isForSale,
-            "Token not for sale!"
+            "Token Id not on sale!"
         );
         require(
             _sale.seller != _buyer,
