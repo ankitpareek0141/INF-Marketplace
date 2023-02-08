@@ -1,9 +1,4 @@
-const {
-    time,
-    loadFixture,
-  } = require("@nomicfoundation/hardhat-network-helpers");
-  const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
-  const { expect } = require("chai");
+const { expect } = require("chai");
   
 describe("INF Marketplace", function () {
 
@@ -66,7 +61,7 @@ describe("INF Marketplace", function () {
         it("Should revert if minter is an owner!", async () => {
             await expect(
                 infToken.connect(user1).mintTokens('2')
-            ).to.be.rejectedWith("Only owner can mint!");
+            ).to.be.revertedWith("Ownable: caller is not the owner");
         });
 
         it('Should revert if owner mint 0 token!', async () => {

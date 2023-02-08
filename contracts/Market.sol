@@ -12,27 +12,27 @@ contract Market {
         bool isForSale;
     }
 
-    IERC20 private erc20Token;
-    IERC721 private erc721Token;
+    IERC20 private testToken;
+    IERC721 private infToken;
     mapping(uint256 => Sale) public idToSale;
 
     event List(address seller, uint256 tokenId, uint256 price);
     event Buy(address buyer, uint256 tokenId);
 
     constructor(
-        address _erc20Token,
-        address _erc721Token
+        address _testToken,
+        address _infToken
     ) {
         require(
-            _erc20Token.code.length > 0,
+            _testToken.code.length > 0,
             "Invalid TestToken contract!"
         );
         require(
-            _erc721Token.code.length > 0,
+            _infToken.code.length > 0,
             "Invalid INF Token contract!"
         );
-        erc20Token = IERC20(_erc20Token);
-        erc721Token = IERC721(_erc721Token);
+        testToken = IERC20(_testToken);
+        infToken = IERC721(_infToken);
     }
 
     /// @notice Users can put their tokens for sale 
@@ -46,7 +46,7 @@ contract Market {
             "Price should non-zero!"
         );
         require(
-            erc721Token.ownerOf(_tokenId) == _seller,
+            infToken.ownerOf(_tokenId) == _seller,
             "Only token owner can list for sale"
         );
         require(
@@ -74,8 +74,8 @@ contract Market {
             "Token already owned!"
         );
 
-        erc20Token.transferFrom(_buyer, _sale.seller, _sale.price);
-        erc721Token.safeTransferFrom(_sale.seller, _buyer, _tokenId);
+        testToken.transferFrom(_buyer, _sale.seller, _sale.price);
+        infToken.safeTransferFrom(_sale.seller, _buyer, _tokenId);
 
         emit Buy(_buyer, _tokenId);
     }
