@@ -15,8 +15,20 @@ async function main() {
   );
   await testToken.deployed();
 
-  
+  const InfToken = await ethers.getContractFactory('INFToken');
+  const infToken = await InfToken.deploy();
+  await infToken.deployed();
 
+  const Market = await ethers.getContractFactory('Market');
+  const market = await Market.deploy(
+      testToken.address,
+      infToken.address
+  );
+  await market.deployed();
+
+  console.log("TestToken deployed at: ", testToken.address);
+  console.log("INFToken deployed at: ", infToken.address);
+  console.log("Market deployed at: ", market.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
