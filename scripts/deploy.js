@@ -7,11 +7,16 @@
 const hre = require("hardhat");
 
 async function main() {
+  
+  // Deploying Tokens
   const TestToken = await ethers.getContractFactory('TestToken');
   const testToken = await TestToken.deploy(
-      testTokenSupply
+    '100000'
   );
   await testToken.deployed();
+
+  
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
