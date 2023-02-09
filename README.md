@@ -34,3 +34,7 @@ npx hardhat run scripts/deploy.js --netowork goerli
 ```
 Ignore the ```--network goerli``` flag if you don't want to deploy on Goerli network,
 This will just deploy contracts on local hardhat node.
+\
+
+\
+There is also a file called deployedContracts.txt in which all the contract addresses are stored.
