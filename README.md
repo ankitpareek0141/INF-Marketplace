@@ -14,24 +14,27 @@ Now to run the project on your local machine, follow the steps given below:
 ```shell
 git clone https://github.com/ankitpareek0141/INF-Marketplace.git
 ```
-2. Add .env file in the project root folder and add your account private key.
+
+2. Add ```.env``` file in the project root folder and store your account private key in that file like this.
 ```shell
 GOERLI_PRIVATE_KEY = "PASTE_YOUR_ACCOUNT_PRIVATE_KEY_HERE"
 ```
-2. Install dependencies
+
+3. Install dependencies
 ```shell
 npm i
 ```
 
-3. Run the test cases
+4. Run the test cases
 ```shell
 npx hardhat test
 ```
 
-4. For deploying smart contracts on Goerli testnet,
+5. For deploying smart contracts on Goerli testnet,
 ```shell
 npx hardhat run scripts/deploy.js --netowork goerli
 ```
+
 Ignore the ```--network goerli``` flag if you don't want to deploy on Goerli network,
 This will just deploy contracts on local hardhat node
 \
