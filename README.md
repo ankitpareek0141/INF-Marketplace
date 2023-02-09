@@ -6,7 +6,8 @@ The smart contracts are deployed on Goerli test network with the addresses liste
 - INFToken (ERC721): **0x3e76D49b94ffaD2Ac95Fa3afC8B562ED12Cfa130**
 - TestToken (ERC20): **0xdaCCe3CDde940C03F285141d56cE14de9Fc3E8D0**
 
--- Now to run the project on your local machine, follow the steps given below:
+
+Now to run the project on your local machine, follow the steps given below:
 
 1. Clone the repository
 ```shell
